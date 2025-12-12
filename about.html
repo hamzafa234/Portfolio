@@ -67,10 +67,9 @@
         .box:nth-child(3) { animation-delay: 0.3s; }
         .box:nth-child(4) { animation-delay: 0.4s; }
         .box:nth-child(5) { animation-delay: 0.5s; }
-        .box:nth-child(8) { animation-delay: 0.6s; }
-        .box:nth-child(9) { animation-delay: 0.7s; }
-        .box:nth-child(10) { animation-delay: 0.8s; }
-        .box:nth-child(11) { animation-delay: 0.9s; }
+        .box:nth-child(6) { animation-delay: 0.6s; }
+        .box:nth-child(7) { animation-delay: 0.7s; }
+        .box:nth-child(8) { animation-delay: 0.8s; }
 
         .box:hover {
             transform: translateY(-8px);
@@ -87,8 +86,8 @@
             grid-column: 1 / span 2;
             grid-row: 1;
             aspect-ratio: 2 / 1;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
 
         .grid-container .box:nth-child(5) {
@@ -114,24 +113,6 @@
         .grid-container .box:nth-child(8) {
             grid-column: 1 / span 2;
             grid-row: 4;
-            aspect-ratio: 2 / 1;
-        }
-
-        .grid-container .box:nth-child(9) {
-            grid-column: 1 / span 2;
-            grid-row: 5;
-            aspect-ratio: 2 / 1;
-        }
-
-        .grid-container .box:nth-child(10) {
-            grid-column: 1 / span 2;
-            grid-row: 6;
-            aspect-ratio: 2 / 1;
-        }
-
-        .grid-container .box:nth-child(11) {
-            grid-column: 1 / span 2;
-            grid-row: 7;
             aspect-ratio: 2 / 1;
         }
 
@@ -176,33 +157,74 @@
             width: 100%;
         }
 
+        /* Floating Contact Icons */
+        .contact-icons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-icon:hover {
+            background: var(--primary-hover);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .contact-icon.github {
+            background: none;
+            padding: 0;
+        }
+
+        .contact-icon.github img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .contact-icon.github:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
     </style>
 </head>
 <body>
     <div class="grid-container">
         <div class="box"></div>
         <div class="box">
-            <h3 class="box-title">My Name is</h3>
-            <div style="text-align: center;">
-                <h1 style="margin: 0;">Hamza Fahad</h1>
-            </div>
+            <h3 class="box-title">Hamza Fahad</h3>
         </div>
         <div class="box"></div>
         <div class="box"></div>
         <div class="box">
             <h3 class="box-title">Education</h3>
             <p class="box-text">DePaul University</p>
-            <p class="box-text">Major: Computer Science</p>
-            <p class="box-text">Minor: statistics</p>
-            <p class="box-text">Concentration: AI</p>
+            <p class="box-text">BS Computer Science</p>
+            <p class="box-text">Statistics Minor</p>
             <p class="box-text">Graduation Date: 2028</p>
         </div>
         <div class="box">
             <h3 class="box-title">Based In Chicago</h3>
-        </div>
-        <div class="box">
-            <h3 class="box-title">Introduction</h3>
-            <p class="box-text">I am 19 years old. I have had an interest in programing since middle school. Not only do I have hard skills like programming, but I also have soft skills such as communication and team work. I have a 3.82 GPA and my hobbies include weight lifting and reading.</p>
         </div>
         <div class="box">
             <h3 class="box-title">Technologies</h3>
@@ -214,19 +236,14 @@
             <p class="box-text"><strong>Libaries:</strong> Flask, Typer, Pandas</p>
         </div>
         <div class="box">
-            <h3 class="box-title">Contact Info</h3>
-            <br>
-            <p class="box-text">
-                <a href="mailto:hamzafa234@gmail.com">hamzafa234@gmail.com</a>
-            </p>
-            <br>
-            <p class="box-text">
-                <a href="https://www.linkedin.com/in/hamza-fahad-131501283/">My LinkedIn</a>
-            </p>
-        </div>
-        <div class="box">
             <h3 class="box-title">Projects</h3>
         </div>
+    </div>
+
+    
+    <div class="contact-icons">
+        <a href="https://www.linkedin.com/in/hamza-fahad-131501283/" class="contact-icon" title="LinkedIn">in</a>
+        <a href="https://github.com" class="contact-icon github" title="GitHub"><img src="logo.png" alt="GitHub"></a>
     </div>
     
 </body>
