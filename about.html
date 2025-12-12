@@ -119,13 +119,51 @@
         .box-title {
             font-size: 1.2rem;
             font-weight: 700;
-            margin: 0 0 8px 0;
+            margin: 0 0 12px 0;
         }
 
         .box-text {
             font-size: 0.9rem;
             opacity: 0.8;
             margin: 2px 0;
+        }
+
+        /* Technology Stack Styles */
+        .tech-category {
+            margin-bottom: 14px;
+        }
+
+        .tech-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         /* Link Styles */
@@ -177,7 +215,6 @@
             justify-content: center;
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 12px var(--shadow-color);
             font-size: 1.2rem;
             opacity: 0;
@@ -193,9 +230,7 @@
         }
 
         .contact-icon:hover {
-            background: var(--primary-hover);
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px var(--shadow-color);
+            background: var(--primary-color);
         }
 
         .contact-icon.github {
@@ -207,12 +242,10 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            transition: transform 0.3s ease;
             box-shadow: 0 4px 12px var(--shadow-color);
         }
 
         .contact-icon.github:hover img {
-            transform: scale(1.1);
             box-shadow: 0 6px 16px var(--shadow-color);
         }
 
@@ -239,12 +272,22 @@
         </div>
         <div class="box">
             <h3 class="box-title">Technologies</h3>
-            <br>
-            <p class="box-text"><strong>Languages:</strong> Python, Java</p>
-            <br>
-            <p class="box-text"><strong>Tools:</strong> Git, Vim, Linux, ZSH</p>
-            <br>
-            <p class="box-text"><strong>Libaries:</strong> Flask, Typer, Pandas</p>
+            <div class="tech-category">
+                <span class="tech-label">Languages</span>
+                <div class="tech-items">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Java</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <span class="tech-label">Tools</span>
+                <div class="tech-items">
+                    <span class="tech-badge">Git</span>
+                    <span class="tech-badge">Vim</span>
+                    <span class="tech-badge">Linux</span>
+                    <span class="tech-badge">ZSH</span>
+                </div>
+            </div>
         </div>
         <div class="box">
             <h3 class="box-title">Projects</h3>
