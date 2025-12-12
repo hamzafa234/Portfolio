@@ -31,6 +31,28 @@
             to { opacity: 1; }
         }
 
+        @keyframes slideOut {
+            from { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .grid-container,
         .content-area {
             animation: fadeIn 0.8s ease-in forwards;
@@ -126,6 +148,32 @@
             font-size: 0.9rem;
             opacity: 0.8;
             margin: 2px 0;
+        }
+
+        /* Location Content Styles */
+        .location-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .location-item {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .location-item.active {
+            animation: slideIn 0.5s ease-in-out forwards;
+        }
+
+        .location-item.exiting {
+            animation: slideOut 0.5s ease-in-out forwards;
         }
 
         /* Technology Stack Styles */
@@ -267,8 +315,18 @@
             <p class="box-text">Statistics Minor</p>
             <p class="box-text">Graduation Date: 2028</p>
         </div>
-        <div class="box">
-            <h3 class="box-title">Based In Chicago</h3>
+        <div class="box" id="location-box">
+            <div class="location-content">
+                <div class="location-item active">
+                    <h3 class="box-title">Based In Chicago</h3>
+                </div>
+                <div class="location-item">
+                    <h3 class="box-title">Illinois</h3>
+                </div>
+                <div class="location-item">
+                    <h3 class="box-title">USA</h3>
+                </div>
+            </div>
         </div>
         <div class="box">
             <h3 class="box-title">Technologies</h3>
@@ -299,6 +357,27 @@
         <a href="https://www.linkedin.com/in/hamza-fahad-131501283/" class="contact-icon" title="LinkedIn">in</a>
         <a href="https://github.com" class="contact-icon github" title="GitHub"><img src="logo.png" alt="GitHub"></a>
     </div>
+
+    <script>
+        const locationBox = document.getElementById('location-box');
+        const locationItems = locationBox.querySelectorAll('.location-item');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            // Add exiting animation to current item
+            locationItems[currentIndex].classList.remove('active');
+            locationItems[currentIndex].classList.add('exiting');
+            
+            // Move to next item
+            currentIndex = (currentIndex + 1) % locationItems.length;
+            
+            // Remove exiting class and add active to new item
+            setTimeout(() => {
+                locationItems[(currentIndex - 1 + locationItems.length) % locationItems.length].classList.remove('exiting');
+                locationItems[currentIndex].classList.add('active');
+            }, 250);
+        }, 5000);
+    </script>
     
 </body>
 </html>
