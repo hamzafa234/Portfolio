@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Text</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 800vh;
+            background: black;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            padding-top: 120px;
+        }
+        .text-3d {
+            position: fixed;
+            top: 250px;
+            left: 50%;
+            /* Removed animation: hover 3s ease-in-out infinite; */
+            /* The initial transform is kept to center the text */
+            transform: translateX(-50%); 
+            font-size: 5rem;
+            font-weight: 700;
+            color: #F5F5F7;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-shadow: 
+                0 1px 0 #E8E8ED,
+                0 2px 0 #DCDCE1,
+                0 3px 0 #D1D1D6,
+                0 4px 0 #C7C7CC,
+                0 5px 0 #AEAEB2,
+                0 6px 1px rgba(174,174,178,.1),
+                0 0 5px rgba(0,113,227,.1),
+                0 1px 3px rgba(0,113,227,.3),
+                0 3px 5px rgba(0,113,227,.2),
+                0 5px 10px rgba(0,113,227,.25),
+                0 10px 10px rgba(0,113,227,.2),
+                0 20px 20px rgba(0,113,227,.15);
+            z-index: 1000;
+            /* Added transition for smoother text changes */
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Removed @keyframes hover and .text-3d:hover styles */
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+            margin-top: max(80vh, 200px);
+            padding-bottom: 5rem;
+            position: sticky;
+            top: 200px;
+        }
+        .nav-links::before {
+            content: '';
+            display: block;
+            height: 180px;
+            width: 100%;
+        }
+        .nav-link {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #F5F5F7;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            text-shadow: 
+                0 1px 0 #E8E8ED,
+                0 2px 0 #DCDCE1,
+                0 3px 0 #D1D1D6,
+                0 4px 0 #C7C7CC,
+                0 5px 0 #AEAEB2,
+                0 6px 1px rgba(174,174,178,.1),
+                0 0 5px rgba(0,113,227,.1),
+                0 1px 3px rgba(0,113,227,.3),
+                0 3px 5px rgba(0,113,227,.2),
+                0 5px 10px rgba(0,113,227,.25),
+                0 10px 10px rgba(0,113,227,.2),
+                0 20px 20px rgba(0,113,227,.15);
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.05) translateY(-3px);
+            color: lightblue;
+        }
+        .nav-link.falling {
+            animation: fall 0.8s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+            pointer-events: none;
+        }
+        .text-3d.falling {
+            animation: none; /* Stop all animations on falling */
+            opacity: 0;
+            pointer-events: none;
+        }
+        .text-3d.fade-out-in {
+            opacity: 0;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(150vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-3d" id="welcome-text">Welcome</div>
+    <nav class="nav-links">
+        <a href="about.html" class="nav-link">Learn More About Me</a>
+    </nav>
+    <script>
+        // Array of "Welcome" in 15 different languages
+        const welcomes = [
+            "Welcome",   // English
+            "Bienvenido", // Spanish
+            "いらっしゃいませ", // Japanese
+            "Bienvenue",  // French
+            "환영합니다",  // Korean
+            "Willkommen", // German
+            "Benvenuto",  // Italian
+            "Bem-vindo",  // Portuguese
+            "欢迎",       // Chinese (Simplified)
+            "Hoş geldiniz", // Turkish (Alternative, common)
+            "Tervetuloa", // Finnish
+            "Velkommen",  // Norwegian
+            "Vítejte",     // Czech
+        ];
+
+        let currentIndex = 0;
+        const welcomeTextElement = document.getElementById('welcome-text');
+
+        function updateWelcomeText() {
+            // Add a class to fade out
+            welcomeTextElement.classList.add('fade-out-in');
+            
+            // Wait for the fade-out transition (0.3s)
+            setTimeout(() => {
+                // Change the text content
+                welcomeTextElement.textContent = welcomes[currentIndex];
+                
+                // Remove the class to fade back in
+                welcomeTextElement.classList.remove('fade-out-in');
+                
+                // Move to the next index, looping back to 0
+                currentIndex = (currentIndex + 1) % welcomes.length;
+            }, 300); // This delay should match the CSS transition time for opacity
+        }
+
+        // Start the rotation and store the interval ID
+        const rotationInterval = setInterval(updateWelcomeText, 2500);
+
+        // Initial call to start the rotation immediately
+        updateWelcomeText();
+
+
+        // Navigation link functionality 
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const destination = this.getAttribute('href');
+                
+                // Stop the rotation when navigating (Correction: using the defined variable rotationInterval)
+                clearInterval(rotationInterval);
+
+                // Make all links and the welcome text fall
+                welcomeTextElement.classList.add('falling');
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.add('falling');
+                });
+                
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 800);
+            });
+        });
+    </script>
+</body>
+</html>
