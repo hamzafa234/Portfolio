@@ -267,6 +267,26 @@
             font-size: 1.2rem;
             opacity: 0;
             animation: fadeIn 0.8s ease-in forwards;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+        }
+
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .contact-icon:hover::after {
+            width: 100%;
         }
 
         .contact-icon:nth-child(1) {
@@ -277,8 +297,18 @@
             animation-delay: 1s;
         }
 
+        .contact-icon:nth-child(3) {
+            animation-delay: 1.1s;
+        }
+
         .contact-icon:hover {
-            background: var(--primary-color);
+            background: var(--primary-hover);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .contact-icon:hover {
+            color: white;
         }
 
         .contact-icon.github {
@@ -295,6 +325,32 @@
 
         .contact-icon.github:hover img {
             box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .contact-icon.email {
+            font-size: 1.6rem;
+        }
+
+        /* Email Tooltip */
+        .email-tooltip {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            box-shadow: 0 4px 12px var(--shadow-color);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-icon.email:hover .email-tooltip {
+            opacity: 1;
         }
 
     </style>
@@ -358,6 +414,10 @@
     <div class="contact-icons">
         <a href="https://www.linkedin.com/in/hamza-fahad-131501283/" class="contact-icon" title="LinkedIn">in</a>
         <a href="https://github.com" class="contact-icon github" title="GitHub"><img src="logo.png" alt="GitHub"></a>
+        <button class="contact-icon email" title="Email" onclick="copyEmail()">
+            ✉
+            <div class="email-tooltip">Copy email to clipboard!</div>
+        </button>
     </div>
 
     <script>
@@ -379,6 +439,17 @@
                 locationItems[currentIndex].classList.add('active');
             }, 250);
         }, 5000);
+
+        function copyEmail() {
+            const email = "your-email@example.com"; // Replace with your actual email
+            navigator.clipboard.writeText(email).then(() => {
+                const tooltip = document.querySelector('.email-tooltip');
+                tooltip.textContent = 'Copied to clipboard!';
+                setTimeout(() => {
+                    tooltip.textContent = 'Copy to clipboard!';
+                }, 2000);
+            });
+        }
     </script>
     
 </body>
