@@ -1,0 +1,90 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 20px;
+  background-color: black;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0px;
+  max-width: 1200px;
+  width: 100%;
+  animation: fadeIn 1s ease-out forwards;
+}
+/* Bigbox spans 2 columns */
+.grid-container > :nth-child(1),
+.grid-container > :nth-child(2),
+.grid-container > :nth-child(5) {
+  grid-column: span 2;
+}
+/* Box takes 1 column (3rd and 4th children) */
+.grid-container > :nth-child(3),
+.grid-container > :nth-child(4) {
+  grid-column: span 1;
+}
+/* --- Grid Item Styling --- */
+.grid-container > * {
+  cursor: pointer;
+  transition: transform 0.3s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-container > :nth-child(1),
+  .grid-container > :nth-child(2),
+  .grid-container > :nth-child(3),
+  .grid-container > :nth-child(4),
+  .grid-container > :nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+/* Define the fade-in keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation delays for staggered fade-in */
+.grid-container > :nth-child(1) {
+  animation-delay: 0.1s;
+}
+.grid-container > :nth-child(2) {
+  animation-delay: 0.3s;
+}
+.grid-container > :nth-child(3) {
+  animation-delay: 0.5s;
+}
+.grid-container > :nth-child(4) {
+  animation-delay: 0.7s;
+}
+.grid-container > :nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-left: 0;
+}
