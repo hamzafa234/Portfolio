@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
 
 function Box({ title, paragraph, titletwo, paragraphtwo, image }) {
@@ -14,13 +14,31 @@ function Box({ title, paragraph, titletwo, paragraphtwo, image }) {
   const current = contents[contentIndex];
   const textColor = image ? 'white' : 'black';
   
-  const handleArrowClick = (e) => {
-    e.stopPropagation();
+  // Function to change to the next content index
+  const goToNextContent = () => {
     setIsTransitioning(true);
     setTimeout(() => {
       setContentIndex((prev) => (prev + 1) % contents.length);
       setIsTransitioning(false);
-    }, 150);
+    }, 150); // Match the transition time
+  };
+
+  // useEffect for auto-rotation
+  useEffect(() => {
+    // Set up the interval for auto-rotation (10000ms = 10 seconds)
+    const intervalId = setInterval(() => {
+      goToNextContent();
+    }, 10000);
+
+    // Clean up the interval when the component unmounts
+    // or when the contentIndex changes to reset the timer
+    return () => clearInterval(intervalId);
+  }, [contentIndex]); // Re-run effect when contentIndex changes to reset timer
+
+  const handleArrowClick = (e) => {
+    e.stopPropagation();
+    // Manually trigger the transition and content change
+    goToNextContent();
   };
   
   return (

@@ -10,7 +10,7 @@ function App() {
         <Bigbox title="Hamza Fahad" paragraph="I am a college sophomore and have been coding since highschool. I have strong soft skills such as communication and knowing how to work in a team."/>
         <Bigbox 
           title="Technologies" 
-          paragraph={<><Smallbox word="Java" />  <Smallbox word="Python" /> <Smallbox word="ZSH" /> <Smallbox word="Linux" /> <Smallbox word="Git" /> <Smallbox word="Vim" /></>} 
+          paragraph={<><Smallbox word="Java" />  <Smallbox word="Python" /> <Smallbox word="ZSH" /> <Smallbox word="Linux" /> <Smallbox word="React" /> <Smallbox word="Git" /> <Smallbox word="Vim" /></>} 
         />
         <Box 
           title="Education" 
