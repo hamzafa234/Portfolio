@@ -3,7 +3,6 @@ import Bigbox from './Bigbox.jsx';
 import './App.css' 
 import Smallbox from './tech.jsx';
 import Contact from './contact.jsx'
-
 function App() {
   return(
     <>
@@ -31,5 +30,4 @@ function App() {
     </>
   );  
 }
-
 export default App
