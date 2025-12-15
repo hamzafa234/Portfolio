@@ -27,6 +27,9 @@ function App() {
       <div style={{ position: 'fixed', bottom: '20px', right: '70px'}}>
         <Contact link="https://www.linkedin.com/in/hamza-fahad-131501283/" image="./linkedin.png"></Contact> 
       </div>
+      <div style={{ position: 'fixed', bottom: '20px', right: '120px'}}>
+        <Smallbox word="hamzafa234@gmail.com"/> 
+      </div>
     </>
   );  
 }
