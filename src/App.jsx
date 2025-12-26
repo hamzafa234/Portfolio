@@ -10,7 +10,7 @@ function App() {
         <Bigbox title="Hamza Fahad" paragraph="I am a college sophomore and have been coding since high school. I have soft skills such as communication and knowing how to work in a team."/>
         <Bigbox 
           title="Technologies" 
-          paragraph={<><Smallbox word="Java" />  <Smallbox word="Python" /> <Smallbox word="ZSH" /> <Smallbox word="Linux" /> <Smallbox word="React" /> <Smallbox word="Git" /> <Smallbox word="Vim" /></>} 
+          paragraph={<><Smallbox word="Java" />  <Smallbox word="Python" /> <Smallbox word="PostgreSQL" /> <Smallbox word="Linux" /> <Smallbox word="React" /> <Smallbox word="Git" /> <Smallbox word="Vim" /></>} 
         />
         <Box 
           title="Education" 
@@ -19,7 +19,7 @@ function App() {
           paragraphtwo={<ul><li>Technical Writing</li><li>Discrete Math</li><li>Data Strutures</li><li>Intro to Computer Science</li><li>Calculus 1 & 2</li></ul>}
         />
         <Box title="Based in Chicago" image="./city.jpeg" titletwo="Willing to relocate to:" paragraphtwo={<><ul><li>San Francisco</li><li>New York</li><li>Seattle</li></ul></>}></Box>
-        <Bigbox title="Projects" paragraph="text"></Bigbox>
+        <Bigbox title="Open Source Contirbutions" paragraph="API keys are required"></Bigbox>
       </div>
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <Contact link="https://github.com/hamzafa234" image="./logo.png"></Contact>
