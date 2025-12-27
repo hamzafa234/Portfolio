@@ -1,4 +1,4 @@
-function Tall({ title, paragraph, linkText, linkUrl }) {
+function Tall({ title, paragraph, secondParagraph, linkText, linkUrl }) {
   
   const Style = {
     width: '505px',
@@ -10,7 +10,7 @@ function Tall({ title, paragraph, linkText, linkUrl }) {
     flexDirection: 'column',
     justifyContent: 'flex-start', 
     padding: '20px',
-    boxSizing: 'border-box' // Ensures padding doesn't increase the total width
+    boxSizing: 'border-box'
   }
   
   return (
@@ -20,10 +20,17 @@ function Tall({ title, paragraph, linkText, linkUrl }) {
         {title}
       </div>
 
-      {/* Paragraph Section */}
-      <div style={{ color: 'Black', fontSize: '14px' }}>
+      {/* First Paragraph Section */}
+      <div style={{ color: 'Black', fontSize: '14px', marginBottom: '10px' }}>
         {paragraph}
       </div>
+
+      {/* Second Paragraph Section */}
+      {secondParagraph && (
+        <div style={{ color: 'Black', fontSize: '14px' }}>
+          {secondParagraph}
+        </div>
+      )}
 
       {/* Link Section - Pushed to bottom */}
       {linkUrl && (
