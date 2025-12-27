@@ -3,6 +3,8 @@ import Bigbox from './Bigbox.jsx';
 import './App.css' 
 import Smallbox from './tech.jsx';
 import Contact from './contact.jsx'
+import Tall from './tall.jsx'
+
 function App() {
   return(
     <>
@@ -19,7 +21,7 @@ function App() {
           paragraphtwo={<ul><li>Technical Writing</li><li>Discrete Math</li><li>Data Strutures</li><li>Intro to Computer Science</li><li>Calculus 1 & 2</li></ul>}
         />
         <Box title="Based in Chicago" image="./city.jpeg" titletwo="Willing to relocate to:" paragraphtwo={<><ul><li>San Francisco</li><li>New York</li><li>Seattle</li></ul></>}></Box>
-        <Bigbox title="Open Source Contirbutions" paragraph="API keys are required"></Bigbox>
+        <Tall title="Retail Terminal" linkUrl="https://github.com/hamzafa234/Retail-Terminal" paragraph="The purpose of this project was to help retail investors access risk. When the program is run it will display distance to default and specific details about a companies debt. This project uses PostgresSQL to keep track of large amounts of data. The Pandas and Ollama libraries were also utilized. The reason so much data is needed is due to the shear amount of inputs the Black Scholes Merton model requires. Ollama provides access to LLMs using an api. This was used to help turn unstrutured data into strutured data. It is a tool that helps investors not just understand how likely a company is to go under today, but also how likely it was to go under up to 10 years ago."></Tall>
       </div>
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <Contact link="https://github.com/hamzafa234" image="./logo.png"></Contact>
